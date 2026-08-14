@@ -1,8 +1,10 @@
 mode = "dark"
 
+cursor = "#e7e9ea"          # Terminal cursor and helix cursor fill
+
 accent = "#626262"          # UI accent: links, focused controls, active states, lock glyph
 selection = "#262626"       # UI selection fills (btop meter, editor selection tint)
-muted = "#626262"           # Dim text, inactive UI, subtle borders
+muted = "#4d4d4d"           # Dim text, inactive UI, subtle borders
 
 background = "#000000"      # Default background for terminals and themed UI surfaces
 dark_background = "#0d0d0d" # Deeper canvas
@@ -14,21 +16,21 @@ dark_foreground = "#626262" # Muted text
 light_foreground = "#e0e0e0"
 bright_foreground = "#e7e9ea"
 
-# Monochrome ANSI palette with a soft peach accent.
+# Monochrome ANSI palette.
 red = "#8a8a8a"
 yellow = "#9e9e9e"
-orange = "#ff8852"
+orange = "#a8a8a8"
 green = "#e7e9ea"
 cyan = "#767676"
 blue = "#626262"
 magenta = "#8a8a8a"
-brown = "#804429"
+brown = "#5c5c5c"
 
 bright_red = "#9e9e9e"
 bright_yellow = "#b2b2b2"
 bright_green = "#767676"
 bright_cyan = "#9e9e9e"
-bright_blue = "#626262"
+bright_blue = "#9e9e9e"
 bright_magenta = "#8a8a8a"
 
 # High-contrast inverted terminal selection (white on black).

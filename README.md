@@ -11,7 +11,7 @@ Einstein & Jobs wore the same damn thing every day. Now you can too.
 ## Install
 
 ```bash
-omarchy theme install https://github.com/<you>/omarchy-minimal-black.git
+omarchy theme install https://github.com/murilo-preto/omarchy-minimal-black.git
 omarchy theme set minimal-black
 ```
 
@@ -21,7 +21,7 @@ omarchy theme set minimal-black
 |------|---------|
 | `colors.toml` | Semantic palette (mode, accent, background/foreground shades, ANSI colors) |
 | `backgrounds/` | Subtle wallpapers |
-| `icons.theme` | Icon theme (`Yaru-sage`) |
+| `icons.theme` | Icon theme (`Adwaita`) |
 | `neovim.lua` | Neovim colorscheme (oxocarbon) |
 | `vscode.json` | VS Code theme override (Matte Black) |
 | `unlock.png` | Lock screen glyph |
