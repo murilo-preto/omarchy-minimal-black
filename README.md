@@ -20,6 +20,7 @@ omarchy theme set minimal-black
 | File | Purpose |
 |------|---------|
 | `colors.toml` | Semantic palette (mode, accent, background/foreground shades, ANSI colors) |
+| `hyprland.lua` | Theme-only Hyprland overrides (no gaps, blur, window opacity, border color) |
 | `backgrounds/` | Subtle wallpapers |
 | `icons.theme` | Icon theme (`Adwaita`) |
 | `neovim.lua` | Neovim colorscheme (oxocarbon) |
