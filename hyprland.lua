@@ -25,19 +25,30 @@ hl.config({
   },
 
   decoration = {
+    rounding = 14,
+    shadow = {
+      enabled = false,
+      range = 15,
+      render_power = 5,
+      offset = "0 0",
+    },
     blur = {
       enabled = true,
-      size = 6,
+      size = 5,
       passes = 3,
-      noise = 0.2,
-      brightness = 0.35,
-      vibrancy = 0.2,
-      vibrancy_darkness = 0.0,
+      contrast = 1.02,
+      brightness = 1.00,
+      vibrancy = 0.12,
+      vibrancy_darkness = 0.15,
+      noise = 0.02,
+      ignore_opacity = true,
       new_optimizations = true,
-      xray = false,
-      special = true,
     },
+    active_opacity = 0.90,
+    inactive_opacity = 0.88,
+    fullscreen_opacity = 1.0,
   },
+
 })
 
 -- Subtle transparency so the blur shows through.
