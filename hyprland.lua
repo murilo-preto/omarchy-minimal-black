@@ -1,20 +1,26 @@
 -- Minimal Black theme Hyprland overrides.
--- Loaded only while minimal-black is the active theme (omarchy.current.theme.hyprland).
+-- Loaded only while minimal-black is the active theme.
+--
+-- NOTE: Omarchy refuses to stage *.lua from a theme installed via
+-- `omarchy theme install` (it would be running a stranger's code). This file
+-- takes effect only when the theme directory is one you wrote yourself or a
+-- symlink to your own working copy. See README.
 
 local active_border_color = "#626262"
 local inactive_border_color = "rgba(595959aa)"
 
 hl.config({
   general = {
-    -- No gaps between windows or borders.
-    gaps_in = 0,
-    gaps_out = 0,
-    border_size = 0,
-
     col = {
       active_border = active_border_color,
       inactive_border = inactive_border_color,
     },
+
+    -- Edge-to-edge: no gaps between windows, no borders.
+    -- Uncomment for the full minimal look.
+    -- gaps_in = 0,
+    -- gaps_out = 0,
+    -- border_size = 0,
   },
 
   group = {
@@ -26,12 +32,11 @@ hl.config({
 
   decoration = {
     rounding = 14,
+
     shadow = {
       enabled = false,
-      range = 15,
-      render_power = 5,
-      offset = "0 0",
     },
+
     blur = {
       enabled = true,
       size = 5,
@@ -41,15 +46,14 @@ hl.config({
       vibrancy = 0.12,
       vibrancy_darkness = 0.15,
       noise = 0.02,
+      -- Blur behind app-side alpha too, e.g. the terminal's own window opacity.
       ignore_opacity = true,
       new_optimizations = true,
     },
-    active_opacity = 0.90,
-    inactive_opacity = 0.88,
-    fullscreen_opacity = 1.0,
   },
-
 })
 
--- Subtle transparency so the blur shows through.
-o.window(".*", { opacity = "0.94 0.90" })
+-- Subtle window transparency so the blur shows through. Overrides Omarchy's
+-- default "0.985 0.96". Scoped to the default-opacity tag so apps that opt out
+-- (steam, qemu, video web apps, picture-in-picture) stay fully opaque.
+o.window({ tag = "default-opacity" }, { opacity = "0.94 0.90" })
