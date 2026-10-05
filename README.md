@@ -20,7 +20,8 @@ omarchy theme set minimal-black
 | File | Purpose |
 |------|---------|
 | `colors.toml` | Semantic palette (mode, accent, background/foreground shades, ANSI colors) |
-| `hyprland.lua` | Theme-only Hyprland overrides (blur, rounding, window opacity, border color) |
+| `hyprland.lua` | Theme-only Hyprland overrides (blur, shadow, rounding, window opacity, hairline borders, shell layer blur) |
+| `shell.toml` | Translucent Omarchy shell surfaces: bar, menus, launcher, notifications, popups, lock card |
 | `alacritty.toml` | Terminal palette + `[window] opacity` (terminal background alpha) |
 | `backgrounds/` | Subtle wallpapers |
 | `icons.theme` | Icon theme (`Adwaita`) |
@@ -60,8 +61,26 @@ that opt out -- steam, qemu, video web apps, picture-in-picture -- stay opaque.
 Edge-to-edge (`gaps_in`/`gaps_out`/`border_size = 0`) is commented out in
 `hyprland.lua`; uncomment for the full minimal look.
 
+## Glass shell
+
+`shell.toml` lowers the background alpha of the bar, launcher, menus,
+notifications, popups, tooltips, polkit prompt and lock card, and swaps their
+borders for a faint white hairline. `hyprland.lua` adds a layer rule that blurs
+what sits behind those surfaces, plus a soft window shadow and 1px translucent
+window borders.
+
+`shell.toml` is kept by `omarchy theme install`, so translucency works for
+everyone; the blur behind it needs `hyprland.lua`, i.e. the symlinked setup
+above. Without blur, lower alphas just look see-through rather than frosted.
+
+The layer rule's `ignore_alpha = 0.4` sits between the full-screen scrims
+(<= 0.30) and the cards (>= 0.55), so opening a menu blurs only behind the
+card, not the whole screen. Keep that ordering if you tune the alphas.
+
 ## Notes
 
+- `shell.toml` is a hand-resolved copy of Omarchy's `shell.toml.tpl`; its
+  colors must also be kept in sync with `colors.toml`.
 - Every other config (shell, btop, neovim, helix, etc.) is generated from
   `colors.toml` by Omarchy's template engine at theme-set time.
 - Shipping `alacritty.toml` means Omarchy's `alacritty.toml.tpl` is skipped for

@@ -6,8 +6,9 @@
 -- takes effect only when the theme directory is one you wrote yourself or a
 -- symlink to your own working copy. See README.
 
-local active_border_color = "#626262"
-local inactive_border_color = "rgba(595959aa)"
+-- Hairline translucent edges, like macOS window chrome.
+local active_border_color = "rgba(e7e9ea33)"
+local inactive_border_color = "rgba(e7e9ea14)"
 
 hl.config({
   general = {
@@ -15,6 +16,8 @@ hl.config({
       active_border = active_border_color,
       inactive_border = inactive_border_color,
     },
+
+    border_size = 1,
 
     -- Edge-to-edge: no gaps between windows, no borders.
     -- Uncomment for the full minimal look.
@@ -33,17 +36,21 @@ hl.config({
   decoration = {
     rounding = 14,
 
+    -- Soft drop shadow so glass panes float above the wallpaper.
     shadow = {
-      enabled = false,
+      enabled = true,
+      range = 24,
+      render_power = 3,
+      color = "rgba(00000066)",
     },
 
     blur = {
       enabled = true,
-      size = 5,
+      size = 8,
       passes = 3,
       contrast = 1.02,
       brightness = 1.00,
-      vibrancy = 0.12,
+      vibrancy = 0.20,
       vibrancy_darkness = 0.15,
       noise = 0.02,
       -- Blur behind app-side alpha too, e.g. the terminal's own window opacity.
@@ -64,3 +71,14 @@ hl.config({
 -- (browsers, steam, qemu, video web apps, picture-in-picture) get only the
 -- global opacity above.
 o.window({ tag = "default-opacity" }, { opacity = "0.94 0.90" })
+
+-- Glass for shell surfaces (see shell.toml): blur behind the bar, menus,
+-- notifications, OSD and popups. ignore_alpha sits between the scrims
+-- (<= 0.30) and the cards (>= 0.55), so only the cards get blurred, not the
+-- full-screen dim layer behind a menu.
+hl.layer_rule({
+  match = { namespace = "^omarchy-(bar|menu|clipboard|emojis|keyboard-panel|notifications|osd|polkit|reminders|network-qr)$" },
+  blur = true,
+  blur_popups = true,
+  ignore_alpha = 0.4,
+})
