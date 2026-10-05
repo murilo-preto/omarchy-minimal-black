@@ -50,10 +50,17 @@ hl.config({
       ignore_opacity = true,
       new_optimizations = true,
     },
+
+    -- Global window opacity (as in amekoji), so every window -- browsers
+    -- included -- is a little transparent. Multiplies with window rules.
+    active_opacity = 0.90,
+    inactive_opacity = 0.88,
+    fullscreen_opacity = 1.0,
   },
 })
 
 -- Subtle window transparency so the blur shows through. Overrides Omarchy's
--- default "0.985 0.96". Scoped to the default-opacity tag so apps that opt out
--- (steam, qemu, video web apps, picture-in-picture) stay fully opaque.
+-- default "0.985 0.96". Scoped to the default-opacity tag; apps that opt out
+-- (browsers, steam, qemu, video web apps, picture-in-picture) get only the
+-- global opacity above.
 o.window({ tag = "default-opacity" }, { opacity = "0.94 0.90" })
